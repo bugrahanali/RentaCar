@@ -38,9 +38,9 @@ namespace Business.Concrete
 
         }
 
-        public void Delete()
+        public void Delete(Car car)
         {
-            throw new NotImplementedException();
+            _carDal.Delete(car );
         }
 
         public List<Car> GetAll()
@@ -68,9 +68,9 @@ namespace Business.Concrete
             return _carDal.GetAll(p => p.ColorId == ıd);
         }
 
-        public void Update()
+        public void Update(Car  car)
         {
-            
+            _carDal.UpDate(car);
         }
     }
 }

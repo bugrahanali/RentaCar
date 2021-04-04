@@ -1,8 +1,10 @@
-﻿using DataAccess.Abstract;
+﻿using Core.DataAccess;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete.InMermory
@@ -14,7 +16,7 @@ namespace DataAccess.Concrete.InMermory
         {
             _cars = new List<Car>
             {
-                new Car {Id=1,CarName="BMW", BrandId= 1, ColorId=1,DailyPrice=1212, Description="yepisyeni",MoldelYear=2020 }
+                new Car {CarId=1,CarName="BMW", BrandId= 1, ColorId=1,DailyPrice=1212, Description="yepisyeni",MoldelYear=2020 }
             };
         }
 
@@ -25,12 +27,22 @@ namespace DataAccess.Concrete.InMermory
 
         public void Delete(Car car)
         {
-            Car carToDelete =   carToDelete = _cars.SingleOrDefault(c=>c.Id==car.Id);
+            Car carToDelete =   carToDelete = _cars.SingleOrDefault(c=>c.CarId==car.CarId);
+        }
+
+        public Car Get(Expression<Func<Car, bool>> filter)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Car> GetAll()
         {
            return _cars;
+        }
+
+        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Car> GetById(int brandId)
@@ -40,8 +52,8 @@ namespace DataAccess.Concrete.InMermory
 
         public void UpDate(Car car)
         {
-            Car carToUpdate = carToUpdate = _cars.SingleOrDefault(c => c.Id == car.Id);
-            carToUpdate.Id = car.Id;
+            Car carToUpdate = carToUpdate = _cars.SingleOrDefault(c => c.CarId == car.CarId);
+            carToUpdate.CarId = car.CarId;
             carToUpdate.CarName = car.CarName;
             carToUpdate.BrandId = car.BrandId;
             carToUpdate.ColorId = car.ColorId;
@@ -51,6 +63,11 @@ namespace DataAccess.Concrete.InMermory
 
 
 
+        }
+
+        Car IEntityRepository<Car>.GetById(int Id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
