@@ -1,6 +1,7 @@
 ﻿using Core.DataAccess;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace DataAccess.Concrete.InMermory
         {
             _cars = new List<Car>
             {
-                new Car {CarId=1,CarName="BMW", BrandId= 1, ColorId=1,DailyPrice=1212, Description="yepisyeni",MoldelYear=2020 }
+                new Car {CarId=1,CarName="BMW", BrandId= 1, ColorId=1,DailyPrice=1212, Description="yepisyeni",ModelYear=2020 }
             };
         }
 
@@ -50,7 +51,17 @@ namespace DataAccess.Concrete.InMermory
            return _cars.Where(c => c.BrandId == brandId).ToList();
         }
 
-        public void UpDate(Car car)
+        public Car GetById(Expression<Func<Car, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarDetailDto> GetCarDetailDtos()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Car car)
         {
             Car carToUpdate = carToUpdate = _cars.SingleOrDefault(c => c.CarId == car.CarId);
             carToUpdate.CarId = car.CarId;
@@ -59,15 +70,12 @@ namespace DataAccess.Concrete.InMermory
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.DailyPrice = car.DailyPrice;
             carToUpdate.Description = car.Description;
-            carToUpdate.MoldelYear = car.MoldelYear ;
+            carToUpdate.ModelYear = car.ModelYear ;
 
 
 
         }
 
-        Car IEntityRepository<Car>.GetById(int Id)
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 }
