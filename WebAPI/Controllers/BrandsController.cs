@@ -21,7 +21,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public ActionResult Post(Brand brand)
+        public ActionResult Add(Brand brand)
         {
 
             var result = _brandService.Add(brand);
@@ -56,7 +56,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public ActionResult Get()
+        public ActionResult GetAll()
         {
 
             var result = _brandService.GetAll();

@@ -18,18 +18,24 @@ namespace Business.Concrete
         }
 
         public IResult Add(Brand brand)
+
         {
+            _brandDal.Add(brand);
             return new SuccessResult(Messages.BrandAdded);
         }
 
         public IResult Delete(Brand brand)
+
         {
+            _brandDal.Delete(brand);
             return new SuccessResult(Messages.BrandDeleted);
         }
 
         public IDataResult<List<Brand>> GetAll()
         {
-            return new SuccessDataResult<List<Brand>>(Messages.BrandListed);
+            
+
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(),Messages.BrandListed);
         }
 
         public IResult Update(Brand brand)
