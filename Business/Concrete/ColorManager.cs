@@ -36,8 +36,8 @@ namespace Business.Concrete
             _colorDal.Update(color);
             return new SuccessResult(Messages.ColorUpdated);
         }
-
-        IDataResult<List<Color>> IColorService.GetAll()
+        
+        public IDataResult<List<Color>> GetAll()
         {
             return new SuccessDataResult<List<Color>>(_colorDal.GetAll(), Messages.ColorListed);
         }

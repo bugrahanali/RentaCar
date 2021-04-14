@@ -17,7 +17,7 @@ namespace Business.Contants
         public static string UserUpdated="Kullanıcı güncellendi";
         public static string CarDeleted="Araba silindi";
         public static string CarUpdated="Araba güncellendi";
-        public static string ColorAdded="Renk güncellendi";
+        public static string ColorAdded="Renk eklendi";
         public static string ColorDeleted= "Renk Silindi ";
         public static string ColorUpdated="Renk güncellendi";
         public static string ColorListed="Renk listelendi";

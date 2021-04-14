@@ -56,13 +56,13 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public ActionResult Get()
+        public ActionResult GetAll()
         {
 
             var result = _colorService.GetAll();
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
             return BadRequest(result.Message);
         }
